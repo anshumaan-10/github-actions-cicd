@@ -21,6 +21,7 @@ jobs:
   security:
     runs-on: ubuntu-latest
     name: Run the SCA scan on the source code
+    needs: build
     steps:
       - uses: actions/checkout@master
       - name: RunSnyk to check for vulnerabilities
@@ -31,6 +32,7 @@ jobs:
   zap_scan:
     runs-on: ubuntu-latest
     name: Run DAST scan on the web application
+    needs: security
     steps:
       - name: Checkout
         uses: actions/checkout@v2
