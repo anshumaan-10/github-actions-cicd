@@ -11,11 +11,12 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: main
-      - name: ZAP Scan
+      - name: ZAP Scan (Update image name if needed)
         uses: zaproxy/action-baseline@v0.6.1
         with:
-          docker_name: 'owasp/zap2docker-stable'
+          # Update with the latest stable image name if needed
+          docker_name: 'owasp/zap2docker-stable' 
           target: 'http://testphp.vulnweb.com/'
-          rules_file_name: '.zap/rules.tsv'
+          # Comment out this line if you don't have a custom rules file
+          # rules_file_name: '.zap/rules.tsv'
           cmd_options: '-a'
-
